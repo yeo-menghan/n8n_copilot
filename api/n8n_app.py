@@ -3,6 +3,10 @@ import json
 
 app = Flask(__name__)
 
+@app.route('/')
+def home():
+    return "Hello from vercel flask"
+
 # Define the route for the GET request
 @app.route('/get-json', methods=['GET'])
 def get_json():
