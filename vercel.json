@@ -1,0 +1,16 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "/api/n8n_app.py",
+      "use": "@vercel/python"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/get-json",
+      "dest": "/api/n8n_app.py",
+      "methods": ["GET"]
+    }
+  ]
+}
