@@ -59,11 +59,11 @@ const sample_data = {
   ],
 };
 
-async function checkJSON(tsContent) {
+async function checkJson(tsContent) {
   let isJSON = true;
   try {
-
-    JSON.parse(JSON.stringify(tsContent));
+    result = JSON.parse(JSON.stringify(tsContent));
+    console.log(result)
     console.log("The provided data is in valid JSON format.");
   } catch (error) {
     isJSON = false;
@@ -79,4 +79,4 @@ async function checkJSON(tsContent) {
 
 // main()
 
-module.exports = { checkJSON };
+module.exports = { checkJson };

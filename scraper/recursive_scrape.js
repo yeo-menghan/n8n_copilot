@@ -1,4 +1,5 @@
 const { Octokit, App } = require("octokit");
+const { fetchAndParseFile } = require("./utils/fetchAndParseFile");
 require('dotenv').config()
 
 const octokit = new Octokit({
@@ -8,6 +9,10 @@ const octokit = new Octokit({
 const fetch = require('node-fetch');
 const path = require('path');
 
+/*
+  - Scrape the root node JSON
+  - Review the extended files to continue scrapping
+*/
 async function fetchAndParseFile(url) {
   const response = await fetch(url);
   if (!response.ok) {
