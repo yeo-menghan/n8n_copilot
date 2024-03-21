@@ -32,6 +32,19 @@ function findVariablesWithType(codeText, typeName) {
   return variables;
 }
 
+function initializerToJson(initializer, sourceFile) {
+  // This is a simplified way to convert an initializer to JSON.
+  // For complex cases, you might need a more robust approach.
+  try {
+    const text = initializer.getText(sourceFile);
+    const json = eval('(' + text + ')');
+    return json;
+  } catch (error) {
+    console.error('Failed to convert initializer to JSON', error);
+    return null;
+  }
+}
+
 /*
   Input: Typescript file
   Output: A continuous json blob of the current typescript file AND the file paths to child json
@@ -44,21 +57,10 @@ function findVariablesWithType(codeText, typeName) {
   Once done, the arrays will combine into continuous json blob up until the root node typescript file
 */
 async function parseTypeScript(tsContent) {
-  // const regex = /export\s+const\s+([a-zA-Z0-9_]+)\s*:\s*INodeProperties\[\s*\]/; // find all const
-  // const matches = tsContent.matchAll(regex);
-
-  // const constants = [];
-  // for(const match of matches){
-  //   if(checkJson(match)){
-  //     prettified_match = JSON.stringify(match[0], null, 2)
-  //     console.log(prettified_match)
-  //     constants.push(prettified_match)
-  //   }
-  // }
-
   const typeName = "INodeProperties";
   const variables = findVariablesWithType(tsContent, typeName);
   console.log("Variables with type", typeName, ":", variables);
+
 }
 
 module.exports = { parseTypeScript };

@@ -13,7 +13,7 @@ function findVariablesWithType(codeText, typeName) {
   function visit(node) {
     if (ts.isVariableStatement(node)) {
       node.declarationList.declarations.forEach(declaration => {
-        // Now, we check if the declaration's type is an array type and its element type matches our target
+        // Check if the declaration's type is an array type and its element type matches our target
         if (declaration.type && ts.isArrayTypeNode(declaration.type)) {
           const arrayElementType = declaration.type.elementType;
           if (arrayElementType && ts.isTypeReferenceNode(arrayElementType) && arrayElementType.typeName.getText(sourceFile) === typeName) {
