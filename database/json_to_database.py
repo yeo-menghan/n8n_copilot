@@ -1,14 +1,15 @@
 import json
 import psycopg2
 from dotenv import load_dotenv
+import os
 
 load_dotenv()
 # Replace these variables with your database connection details
-db_name = 'n8n_copilot_dev'
-db_user = 'rockship'
-db_password = 'rockship'
-db_host = '13.214.145.200'
-db_port = '5432'
+db_name = os.getenv("DB_NAME")
+db_user = os.getenv("DB_USER")
+db_password = os.getenv("DB_PASSWORD")
+db_host = os.getenv("DB_HOST")
+db_port = os.getenv("DB_PORT")
 
 # Path to your JSON file
 json_file_path = './node_list/xml.json'
