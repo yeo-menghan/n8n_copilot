@@ -1,6 +1,8 @@
 import json
 import psycopg2
+from dotenv import load_dotenv
 
+load_dotenv()
 # Replace these variables with your database connection details
 db_name = 'n8n_copilot_dev'
 db_user = 'rockship'
